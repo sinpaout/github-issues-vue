@@ -18,15 +18,18 @@ h3 {
 }
 
 .header {
+  padding: 10px;
+  text-align: left;
   .router-link {
     padding: 10px;
     color: lightseagreen
   }
 
   .router-link-active {
-    font-weight: bold;
+    font-weight: 900;
     text-decoration: none;
     cursor: default;
+    color: #555;
   }
 }
 </style>
