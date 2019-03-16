@@ -1,4 +1,5 @@
 import VueRouter from 'vue-router'
+import store from './store'
 
 import Home from './pages/Home'
 import Opened from './pages/Opened'
@@ -30,4 +31,11 @@ const routes = {
   ]
 }
 
-export default new VueRouter(routes)
+const router = new VueRouter(routes)
+
+router.beforeEach((to, from, next) => {
+  store.dispatch('page/setCurrentRoute', to)
+  next()
+})
+
+export default router

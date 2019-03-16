@@ -9,9 +9,6 @@
 <script>
 export default {
   name: 'Header',
-  props: {
-    msg: String
-  }
 }
 </script>
 
@@ -24,6 +21,12 @@ h3 {
   .router-link {
     padding: 10px;
     color: lightseagreen
+  }
+
+  .router-link-active {
+    font-weight: bold;
+    text-decoration: none;
+    cursor: default;
   }
 }
 </style>
