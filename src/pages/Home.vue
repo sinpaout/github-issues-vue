@@ -1,22 +1,27 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <h3>Issues: {{all.length}}</h3>
-    <button
-      @click="addItem">
-      Add Item
-    </button>
+    <div class="actions">
+      <button
+        class="btn btn-primary"
+        @click="loadIssues">
+        Load issues
+      </button>
+    </div>
     <div>
-      {{all}}
+      <IssueList :issues="allIssues" :hasAction="false" />
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapState, mapActions } from 'vuex'
+import IssueList from '../components/IssueList'
 
 export default {
   name: 'Home',
+  components: {
+    IssueList,
+  },
   props: {
     msg: String
   },
@@ -24,16 +29,25 @@ export default {
     ...mapState({
       issueCount: state => state.cart.checkoutStatus
     }),
-    ...mapGetters('issues', ['all']),
+    ...mapGetters('issues', ['all', 'allIssues']),
   },
   methods: {
-    ...mapActions('issues', ['addItem']),
+    ...mapActions('issues', ['addItem', 'loadIssues']),
+  },
+  created () {
   }
 }
 </script>
 
-<style scoped>
-h3 {
-  margin: 40px 0 0;
+<style lang="scss" scoped>
+.home {
+  h3 {
+    margin: 40px 0 0;
+  }
+
+  .actions {
+    padding: 16px;
+    text-align: right
+  }
 }
 </style>
